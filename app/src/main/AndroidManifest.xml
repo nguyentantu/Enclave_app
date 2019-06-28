@@ -15,7 +15,12 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".ProfileActivity"></activity>
-        <activity android:name=".SignUpActivity" />
+        <activity android:name=".SignUpActivity" >
+            <intent-filter>
+                <action android:name="android.intent.action.SEND"/>
+                <data android:mimeType="message/rfc822"/>
+            </intent-filter>
+        </activity>
         <activity android:name=".TestMain2Activity">
             <intent-filter>
                 <category android:name="android.intent.category.DEFAULT" />
