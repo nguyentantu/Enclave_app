@@ -39,7 +39,6 @@ public class MainActivity extends AppCompatActivity {
 
     int totalEn = 0;
 
-    String usernameset;
 
 
     @Override
@@ -59,17 +58,19 @@ public class MainActivity extends AppCompatActivity {
         btnBack = findViewById(R.id.btn_back);
         btnBack.setVisibility(View.GONE);
 
-        Intent intent = getIntent();
-        usernameset = intent.getStringExtra("usernameset");
+
 
         btnProfile = findViewById(R.id.btn_profile);
 
         btnProfile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, ProfileActivity.class);
-                intent.putExtra("usernameset", usernameset);
-                startActivity(intent);
+                Intent intent = getIntent();
+                String usernameset = intent.getStringExtra("usernameset");
+
+                Intent intent2 = new Intent(MainActivity.this, ProfileActivity.class);
+                intent2.putExtra("usernameset", usernameset);
+                startActivity(intent2);
             }
         });
 
@@ -196,7 +197,7 @@ public class MainActivity extends AppCompatActivity {
         builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int id) {
-                System.exit(1);
+                System.exit(0);
 
             }
         });
