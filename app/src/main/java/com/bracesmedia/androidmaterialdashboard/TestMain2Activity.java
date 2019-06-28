@@ -79,8 +79,6 @@ public class TestMain2Activity extends AppCompatActivity {
             saveLoginCheckBox.setChecked(true);
         }
 
-
-
         btnLogin = findViewById(R.id.btn_login);
         btnSignUp = findViewById(R.id.bt_signUp);
 
@@ -145,6 +143,12 @@ public class TestMain2Activity extends AppCompatActivity {
 
 
         });
+//
+//        Intent intent = getIntent();
+//        String user = intent.getStringExtra("user");
+//        String pass = intent.getStringExtra("pass");
+//        edtUsername.setText(user);
+//        edtPassword.setText(pass);
 
     }
 
