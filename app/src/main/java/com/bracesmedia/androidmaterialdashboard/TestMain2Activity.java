@@ -43,7 +43,7 @@ public class TestMain2Activity extends AppCompatActivity {
 
 
     private CheckBox saveLoginCheckBox;
-    private SharedPreferences loginPreferences;
+    private SharedPreferences loginPreferences; // save status
     private SharedPreferences.Editor loginPrefsEditor;
     private Boolean saveLogin;
 
