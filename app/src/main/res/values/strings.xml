@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Android Material Dashboard</string>
+    <string name="title_activity_profile">ProfileActivity</string>
 </resources>
