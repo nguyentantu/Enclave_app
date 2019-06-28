@@ -21,7 +21,9 @@ import android.widget.Toast;
 
 import org.json.JSONObject;
 
+import java.io.BufferedReader;
 import java.io.DataOutputStream;
+import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
@@ -37,7 +39,7 @@ public class TestMain2Activity extends AppCompatActivity {
 
     Button btnLogin, btnSignUp;
     EditText edtUsername, edtPassword;
-    String UserName, Password;
+    String UserName, Password, usernameget;
 
 
     private CheckBox saveLoginCheckBox;
@@ -206,6 +208,18 @@ public class TestMain2Activity extends AppCompatActivity {
                 //os.writeBytes(URLEncoder.encode(jsonParam.toString(), "UTF-8"));
                 os.writeBytes(jsonParam.toString());
 
+                InputStreamReader isr = new InputStreamReader(conn.getInputStream(), "UTF-8");
+                BufferedReader br = new BufferedReader(isr);
+                StringBuilder builder = new StringBuilder();
+                String line = null;
+                while ((line = br.readLine()) != null) {
+                    builder.append(line);
+                }
+                JSONObject jsonArray = new JSONObject(builder.toString());
+                usernameget = jsonArray.getString("scope");
+
+                br.close();
+
                 os.flush();
                 os.close();
 
@@ -215,6 +229,8 @@ public class TestMain2Activity extends AppCompatActivity {
                 if (status == 200){
                     mProgress.dismiss();
                     Intent intent = new Intent(TestMain2Activity.this, MainActivity.class);
+                    intent.putExtra("usernameset", usernameget);
+
                     startActivity(intent);
                 }else if(status == 409){
                     return "existed";

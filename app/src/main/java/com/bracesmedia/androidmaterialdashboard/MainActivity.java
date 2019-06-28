@@ -39,6 +39,8 @@ public class MainActivity extends AppCompatActivity {
 
     int totalEn = 0;
 
+    String usernameset;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,12 +59,17 @@ public class MainActivity extends AppCompatActivity {
         btnBack = findViewById(R.id.btn_back);
         btnBack.setVisibility(View.GONE);
 
+        Intent intent = getIntent();
+        usernameset = intent.getStringExtra("usernameset");
+
         btnProfile = findViewById(R.id.btn_profile);
 
         btnProfile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                Intent intent = new Intent(MainActivity.this, ProfileActivity.class);
+                intent.putExtra("usernameset", usernameset);
+                startActivity(intent);
             }
         });
 
@@ -74,6 +81,8 @@ public class MainActivity extends AppCompatActivity {
 
         MainActivity.DanhSachSanPhamTask task = new MainActivity.DanhSachSanPhamTask();
         task.execute();
+
+
     }
 
 
